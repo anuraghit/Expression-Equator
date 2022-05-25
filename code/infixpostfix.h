@@ -1,4 +1,3 @@
-//Converting Infix expression to Postfix and evaluating
 #include <algorithm>
 #include <stack>
 #include <string>
@@ -20,21 +19,7 @@ int priority(char op){
     else p = 0;
     return p;
 }
-/* 
- * InFix to PostFix algorithm:
- * infix is the input string, postfix is the output string, opstack is operators stack (char stack)
- * Start scaning the input infix expression from left to right character by character:
- * 1. If character is operand, add it to postfix.
- * 2. 1. If character is operator and the opstack is empty, push it on opstack.
- *    2. If character is left bracket, push it on opstack.
- *    3. If character is right bracket, pop every opstack element and add it to postfix while opstack.top() is left bracket.
- *    4. If character is operator and has higher priority than opstack.top(), push it on opstack.
- *    5. If character is operator and has lower or same priority as opstack.top(), pop every opstack element which 
- *       has higher 
- *       or same priority as the operator, add it to postfix, than push the operator on opstack.
- * 3. If all characters are scaned and opstack is not empty, pop every opstack element and add it to postfix.
- * 4. Return the postfix string
- */
+
 std::string InfixToPostfix(const std::string& infix){
     std::string postfix = ""; //output string
     std::stack<char> opstack; //operator stack
@@ -105,15 +90,7 @@ std::string InfixToPostfix(const std::string& infix){
     }
     return postfix;
 }
-/*
- * Postfix expression evaluation:
- * postfix is the input string, operandStack is operands stack (double stack)
- * Start scanning the input postfix string character by character.
- * 1. If character is operand, push it on operandStack.
- * 2. If character is operator, pop two top elements of operandStack, do the operation
- *    on these elements, and push the result on operandStack again.
- * 3. At the end the result of the expression will be the top operandStack element, so return it.
- */
+
 double EvaluatePostfix(std::string postfix){
     double op1, op2, result; //these will hold the two operands and the result of the operation
     std::stack<double> operandStack; //operand stack
